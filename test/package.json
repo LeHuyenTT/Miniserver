@@ -1,0 +1,20 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "start": "node client.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.7",
+    "@grpc/proto-loader": "^0.7.13",
+    "axios": "^1.6.8",
+    "minimist": "^1.2.8",
+    "path": "^0.12.7",
+    "plotly": "^1.0.6",
+    "socket.io-client": "^4.7.5"
+  }
+}

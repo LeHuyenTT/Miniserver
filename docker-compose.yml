@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  nginx: 
+    build: ./nginx
+    ports:
+      - "4024:4024"
+    depends_on: 
+      - backends
+      - backend
+
+  backends:
+    container_name: backends
+    build: ./backend2/
+    ports:
+      - "9002:4024"
+
+  backend:
+    container_name: backend
+    build: ./backend1/
+    ports:
+      - "9001:4024"
