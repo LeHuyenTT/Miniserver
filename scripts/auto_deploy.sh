@@ -13,7 +13,7 @@ fi
 source ~/.nvm/nvm.sh
 
 URL_REPO="https://github.com/LeHuyenTT/Miniserver.git"
-DIR_REPO="$HOME/repo"
+DIR_REPO="$HOME/repo1"
 APP_NAME="Miniserver"
 MAIN_SCRIPT="app.js"
 
