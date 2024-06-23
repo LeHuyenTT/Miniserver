@@ -48,5 +48,4 @@ manage_application() {
 cleanup_repo
 clone_and_install
 manage_application
-
 #
