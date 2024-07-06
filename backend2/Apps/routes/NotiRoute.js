@@ -11,12 +11,14 @@ const {
     getNotiMdw,
     updateNoti,
     updateReadedAllNoti,
-    updateUnReadedAllNoti
+    updateUnReadedAllNoti,
+    clearAllNotifications
 } = require("../controllers/NotiController");
 
 router.route("/").post(createNoti).get(getAllNoti);
-router.get('/:id', getNotiMdw, getNoti)
-router.delete('/:id', getNotiMdw, deleteNoti)
+router.get('/:id', getNotiMdw, getNoti);
+router.delete('/:id', getNotiMdw, deleteNoti);
+router.delete('/delAll/', clearAllNotifications);
 
 router.put('/:id', getNotiMdw, updateNoti);
 router.put('/readed/:id', updateReadedAllNoti);

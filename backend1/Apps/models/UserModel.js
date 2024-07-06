@@ -20,6 +20,8 @@ var UserModel = new Schema({
 	},
 	class: [{
 		type: String,
+		required: true,
+        ref: "ClassModel"
 	}],
 	role: {
 		type: String,

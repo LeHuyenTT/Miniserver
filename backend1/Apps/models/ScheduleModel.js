@@ -4,11 +4,11 @@ var Schema = mongoose.Schema;
 var ScheduleModel = new Schema({
     startTime: { type: Date },
     endTime: { type: Date },
-    idSubject: {
-        type: Schema.Types.ObjectId,
-        required: true, 
-        ref: "SubjectModel"
-    },
+    // idSubject: {
+    //     type: Schema.Types.ObjectId,
+    //     required: true, 
+    //     ref: "SubjectModel"
+    // },
     idTeacher: {
         type: Schema.Types.ObjectId,
         required: true,

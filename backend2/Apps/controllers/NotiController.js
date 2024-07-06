@@ -42,6 +42,17 @@ exports.deleteNoti = asyncHandler(async (req, res, next) => {
     }
 });
 
+exports.clearAllNotifications = asyncHandler(async (req, res, next) => {
+    try {
+        // Cập nhật tất cả các tài liệu, đặt mảng noti thành rỗng
+        console.log("hello");
+        await NotiModel.updateMany({}, { $set: { noti: [] } });
+        res.json({ success: true, message: 'All notifications cleared.' });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
 exports.getNoti = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: res.notis });
 });

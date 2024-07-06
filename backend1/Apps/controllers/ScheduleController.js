@@ -26,7 +26,7 @@ exports.createSchedule = asyncHandler(async (req, res, next) => {
 
 exports.getAllSchedules = asyncHandler(async (req, res, next) => {
     try {
-        const schedules = await ScheduleModel.find().populate("idSubject")
+        const schedules = await ScheduleModel.find()//.populate("idSubject")
             .populate("idTeacher")
             .populate("idClass")
             .populate("idRoom");
@@ -50,7 +50,7 @@ exports.getScheduleByDeviceTeacher = asyncHandler(async (req, res, next) => {
             //     // $lt: currentDate
             // },
             idRoom: device.room
-        }).populate("idSubject")
+        })//.populate("idSubject")
             .populate("idTeacher")
             .populate("idClass")
             .populate("idRoom");
@@ -88,7 +88,7 @@ exports.getScheduleByDeviceTeacher = asyncHandler(async (req, res, next) => {
 exports.getScheduleById = asyncHandler(async (req, res, next) => {
     try {
         const schedule = await ScheduleModel.findById(req.params.id)
-            .populate("idSubject")
+            //.populate("idSubject")
             .populate("idTeacher")
             .populate("idClass")
             .populate("idRoom");
@@ -112,7 +112,7 @@ exports.getScheduleByTeacher = asyncHandler(async (req, res, next) => {
         const schedules = await ScheduleModel.find(
             {
                 idTeacher: _idTeacher
-            }).populate("idSubject")
+            })//.populate("idSubject")
             .populate("idClass")
             .populate("idRoom")
             .populate("idTeacher").exec();
@@ -163,7 +163,7 @@ exports.getScheduleByTeacherID = asyncHandler(async (req, res, next) => {
                 //     $gte: currentDate,
                 // },
                 idTeacher: _idTeacher
-            }).populate("idSubject")
+            })//.populate("idSubject")
             .populate("idClass")
             .populate("idRoom")
             .populate("idTeacher").exec();
@@ -200,7 +200,7 @@ exports.getScheduleByDeviceStudent = asyncHandler(async (req, res, next) => {
     try {
         const schedules = await ScheduleModel.find({
             idRoom: device.room
-        }).populate("idSubject")
+        })
             .populate("idTeacher")
             .populate("idClass")
             .populate("idRoom");
@@ -214,7 +214,6 @@ exports.getScheduleByDeviceStudent = asyncHandler(async (req, res, next) => {
             }
         }
         index.reverse();
-        console.log(arrSchedules);
         data = [];
         let scheduleTemp = {};
         if(arrSchedules.length > 0){
@@ -270,7 +269,7 @@ exports.getScheduleByStudent = asyncHandler(async (req, res, next) => {
         }
         let schedules = await ScheduleModel.find({
             idRoom: room._id
-        }).populate("idSubject")
+        })//.populate("idSubject")
             .populate("idTeacher")
             .populate("idClass")
             .populate("idRoom").exec();

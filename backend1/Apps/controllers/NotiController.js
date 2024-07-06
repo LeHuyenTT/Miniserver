@@ -42,6 +42,15 @@ exports.deleteNoti = asyncHandler(async (req, res, next) => {
     }
 });
 
+exports.clearAllNotifications = asyncHandler(async (req, res, next) => {
+    try {
+        const result = await NotiModel.deleteMany({});
+        res.status(200).json({ success: true, message: `${result.deletedCount} notifications deleted.` });
+    } catch (err) {
+        res.status(500).json({ success: false, message: err.message });
+    }
+});
+
 exports.getNoti = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: res.notis });
 });
@@ -102,10 +111,10 @@ exports.getNotiMdw = asyncHandler(async (req, res, next) => {
     try {
         noti = await NotiModel.findById(req.params.id);
         if (noti == null) {
-            return res.status(404).json({ success: false, message: 'Cannot find user' });
+            return res.status(404).json({ success: false, message: 'cannot find user' });
         }
     } catch (err) {
-        return res.status(500).json({ success: false, message: 'Cannot find user' });
+        return res.status(500).json({ success: false, message: 'cannot find user *' });
     }
     res.noti = noti;
     next();

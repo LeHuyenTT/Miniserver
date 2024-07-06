@@ -32,11 +32,11 @@ var ClassModel = new Schema({
 		required: true,
 		ref: "ClassRoomModel",
 	},
-	subject: {
-		type: Schema.Types.ObjectId,
-		// required: true,
-		ref: "SubjectModel",
-	},
+	// subject: {
+	// 	type: Schema.Types.ObjectId,
+	// 	// required: true,
+	// 	ref: "SubjectModel",
+	// },
 	teacher: {
 		type: Schema.Types.ObjectId,
 		required: true,

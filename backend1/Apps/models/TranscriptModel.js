@@ -8,12 +8,12 @@ var TranscriptModel = new Schema({
 		ref: "UserModel",
 		unique: true
 	},
-	subject: {
-		type: Schema.Types.ObjectId,
-		required: true,
-		ref: "SubjectModel",
-		unique: true
-	},
+	// subject: {
+	// 	type: Schema.Types.ObjectId,
+	// 	required: true,
+	// 	ref: "SubjectModel",
+	// 	unique: true
+	// },
 	progress: { type: Number, default: 0 },
 	midTerm: { type: Number, default: 0 },
 	endTerm: { type: Number, default: 0 },
