@@ -21,4 +21,3 @@ services:
     build: ./backend1/
     ports:
       - "9001:4024"
-
