@@ -22,13 +22,14 @@ require("./Apps/models/AssignModel");
 require("./Apps/models/AttendanceModel");
 require("./Apps/models/ClassModel");
 require("./Apps/models/DeviceModel");
-// require("./Apps/models/SubjectModel");
+require("./Apps/models/FileModel");
 require("./Apps/models/QuetionModel");
 require("./Apps/models/DocsModel");
 require("./Apps/models/TranscriptModel");
 require("./Apps/models/NotiModel");
 require("./Apps/models/ClassRoomModel");
 require("./Apps/models/StudentModel");
+require("./Apps/models/FileModel");
 
 // Routes
 const userRoutes = require("./Apps/routes/UserRoute")
@@ -36,7 +37,7 @@ const assignRoutes = require("./Apps/routes/AssignRoute")
 const attendanceRoutes = require("./Apps/routes/AttendanceRoute")
 const classRoutes = require("./Apps/routes/ClassRoute")
 const deviceRoutes = require("./Apps/routes/DeviceRoute")
-// const subjectRoutes = require("./Apps/routes/SubjectRoute")
+const FileRoute = require("./Apps/routes/FileRoute")
 const quetionRoutes = require("./Apps/routes/QuetionRoute")
 const docsRoutes = require("./Apps/routes/DocsRoute")
 const transcriptRoutes = require("./Apps/routes/TranscriptRoute")
@@ -66,7 +67,7 @@ app.use(versionOne("assign"), assignRoutes);
 app.use(versionOne("attendance"), attendanceRoutes);
 app.use(versionOne("class"), classRoutes);
 app.use(versionOne("device"), deviceRoutes);
-// app.use(versionOne("subject"), subjectRoutes);
+app.use(versionOne("file"), FileRoute);
 app.use(versionOne("quetion"), quetionRoutes);
 app.use(versionOne("docs"), docsRoutes);
 app.use(versionOne("transcript"), transcriptRoutes);
@@ -97,7 +98,7 @@ app.use(helmet());
 
 var i = 0;
 
-const PORT = 9001;
+const PORT = 9002;
 
 var serverProcess ; 
 

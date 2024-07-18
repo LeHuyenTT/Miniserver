@@ -25,7 +25,7 @@ exports.updateClasses = asyncHandler(async (req, res, next) => {
         existingClass.endTime = req.body.endTime;
         existingClass.teacher = req.body.teacher;
         existingClass.room = req.body.room;
-        existingClass.subject = req.body.subject;
+        // existingClass.subject = req.body.subject;
         existingClass.members = students.map(student => student._id);
 
         // Lưu lại thông tin lớp học đã cập nhật vào cơ sở dữ liệu
@@ -87,6 +87,7 @@ exports.getAllMemberClass = asyncHandler(async (req, res, next) => {
     for (let i = 0; i < ret.members.length; i++) {
         temp["userID"] = ret.members[i].username;
         temp["fullname"] = ret.members[i].fullname;
+        temp["email"] = ret.members[i].email;
         temp["status"] = ret.members[i].status;
         temp["inClass"] = ret.members[i].inClass;
         data.push(temp);
@@ -159,6 +160,7 @@ exports.getAllStudentClass = asyncHandler(async (req, res, next) => {
             if(ret.members[i].role == "student"){
                 temp["userID"] = ret.members[i].username;
                 temp["fullname"] = ret.members[i].fullname;
+                temp["email"] = ret.members[i].email;
                 temp["statusLogin"] = ret.members[i].deviceLogin;
                 temp["statusJoinClass"] = ret.members[i].inClass
                 data.push(temp);
