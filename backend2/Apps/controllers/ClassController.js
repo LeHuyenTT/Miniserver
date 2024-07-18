@@ -138,7 +138,7 @@ exports.customClassFrontend = asyncHandler(async (req, res, next) => {
 exports.getClassMdw = asyncHandler(async (req, res, next) => {
     let classes;
     try {
-        classes = await ClassModel.findById(req.params.id);
+        classes = await ClassModel.findOne({ classID: req.params.id }).exec();
         if (classes == null) {
             return res.status(404).json({ success: false, message: 'Cannot find user' });
         }
