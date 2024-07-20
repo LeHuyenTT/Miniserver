@@ -3,7 +3,7 @@ const ErrorResponse = require("../utils/errorResponse");
 
 //! Models
 const AssignModel = require("../models/AssignModel");
-const UserModel = require("../models/UserModel");
+const StudentModel = require("../models/StudentModel");
 const QuetionModel = require("../models/QuetionModel");
 const ClassModel = require("../models/ClassModel");
 
@@ -116,7 +116,7 @@ exports.getAllMemberAssign = asyncHandler(async (req, res, next) => {
 exports.getAssignByIdAssign = asyncHandler(async (req, res, next) => {
     
     try {
-        const classes = await ClassModel.findOne({classID: req.params.id}).populate('idclass');
+        const classes = await ClassModel.findOne({classID: req.params.id});
         const assigns = await AssignModel.find({_id: classes.assigns[0]}).exec();
         if (assigns){
             res.status(200).json({
@@ -151,7 +151,7 @@ exports.storeResultAssignByID = asyncHandler(async (req, res, next) => {
         // console.log(req.params)
         result = req.body.result;
         resultCompare = result.map(element => element.toUpperCase());
-        const assigns = await AssignModel.findOne({idAssign: req.body.idAssign}).populate('quetions');
+        const assigns = await AssignModel.findOne({idAssign: req.body.idAssign})//.populate('quetions');
         list_asnwer = []
         for (var i = 0; i < assigns.quetions.length; i++) {
             list_asnwer.push(assigns.quetions[i].correctAnswer)
@@ -161,7 +161,8 @@ exports.storeResultAssignByID = asyncHandler(async (req, res, next) => {
         for(var i = 0; i < list_asnwer.length; i++){
             point += (resultCompare[i] == list_asnwer[i]) ? point_in_quetion : 0;
         }
-        const user = await UserModel.findOne({username: req.params.id});
+        const user = await StudentModel.findOne({username: req.params.id});
+
         for (var i = 0; i < assigns.resultOfStudent.length; i++) {
             // console.log(assigns.resultOfStudent[i].student)
             // console.log(user._id)
