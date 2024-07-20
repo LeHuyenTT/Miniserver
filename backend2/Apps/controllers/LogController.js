@@ -3,13 +3,13 @@ const ErrorResponse = require("../utils/errorResponse");
 
 //! Models
 const LogModel = require("../models/LogModel");
-const UserModel = require("../models/UserModel");
+const StudentModel = require("../models/StudentModel");
 
 exports.createLog = asyncHandler(async (req, res, next) => {
     try {
         userID = req.body.userID;
         content = req.body.content;
-        user = await UserModel.findOne({ username: userID });
+        user = await StudentModel.findOne({ username: userID });
         if (user != null) {
             _id_user = user._id;
             logObj = await LogModel.findOne({ user: _id_user });
@@ -44,7 +44,7 @@ function get10ElementsAtEndofArray(array) {
 exports.getLogByUserID = asyncHandler(async (req, res, next) => {
     try {
         userID = req.params.userID;
-        user = await UserModel.findOne({ username: userID });
+        user = await StudentModel.findOne({ username: userID });
         if (user != null) {
             _id_user = user._id;
             logObj = await LogModel.findOne({ user: _id_user });
