@@ -161,7 +161,7 @@ exports.getAllStudentClass = asyncHandler(async (req, res, next) => {
                 temp["userID"] = ret.members[i].username;
                 temp["fullname"] = ret.members[i].fullname;
                 temp["email"] = ret.members[i].email;
-                temp["statusLogin"] = ret.members[i].deviceLogin;
+                temp["statusLogin"] = ret.members[i].status;
                 temp["statusJoinClass"] = ret.members[i].inClass
                 data.push(temp);
                 temp = {};
