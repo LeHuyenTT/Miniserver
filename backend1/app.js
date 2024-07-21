@@ -30,6 +30,7 @@ require("./Apps/models/NotiModel");
 require("./Apps/models/ClassRoomModel");
 require("./Apps/models/StudentModel");
 require("./Apps/models/FileModel");
+require("./Apps/models/LogAssignModel")
 
 // Routes
 const userRoutes = require("./Apps/routes/UserRoute")
@@ -49,6 +50,7 @@ const LogRoutes = require("./Apps/routes/LogRoute");
 const authRoutes = require("./Apps/routes/AuthRoute");
 const parentRoutes = require("./Apps/routes/ParentRoute");
 const studentRoutes = require("./Apps/routes/StudentRoute");
+const logassignRoutes = require("./Apps/routes/LogAssignRoute");
 
 // init Epress App
 const app = express();
@@ -78,6 +80,7 @@ app.use(versionOne("schedule"), ScheduleRoutes);
 app.use(versionOne("auth"), authRoutes);
 app.use(versionOne("log"), LogRoutes);
 app.use(versionOne("parent"), parentRoutes);
+app.use(versionOne("logassign"), logassignRoutes);
 
 // const limiter = rateLimit({
 //     // Rate limiter configuration
